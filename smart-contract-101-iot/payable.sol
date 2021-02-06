@@ -1,19 +1,11 @@
 pragma solidity 0.7.5;
 
-contract Bank {
-    mapping(address => uint) balance;
-    address owner;
+import "./Ownable.sol";
 
-    constructor(){
-        owner = msg.sender;
-    }
+contract Bank is Ownable {
+    mapping(address => uint) balance;
 
     event depositDone(uint amount, address indexed depositedTo);
-
-    modifier onlyOwner {
-        require(msg.sender == owner);
-        _;
-    }
     
     modifier costs(uint price){
         require(msg.value >= price);
