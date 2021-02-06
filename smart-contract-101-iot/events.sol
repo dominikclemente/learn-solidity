@@ -8,6 +8,8 @@ contract Bank {
         owner = msg.sender;
     }
 
+    event balanceAdded(uint amount, address indexed depositedTo);
+
     modifier onlyOwner {
         require(msg.sender == owner);
         _;
@@ -20,6 +22,7 @@ contract Bank {
 
     function addBalance(uint _toAdd) public onlyOwner returns (uint){
         balance[msg.sender] += _toAdd;
+        emit balanceAdded(_toAdd, msg.sender);
         return balance[msg.sender];
     }
 
