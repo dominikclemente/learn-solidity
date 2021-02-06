@@ -20,7 +20,7 @@ contract Bank {
         _; // run the function
     }
 
-    function addBalance() public payable onlyOwner returns (uint){
+    function deposit() public payable onlyOwner returns (uint){
         balance[msg.sender] += msg.value;
         emit depositDone(msg.value, msg.sender);
         return balance[msg.sender];
