@@ -12,7 +12,7 @@ contract Bank is Ownable {
         _; // run the function
     }
 
-    function deposit() public payable onlyOwner returns (uint){
+    function deposit() public payable returns (uint){
         balance[msg.sender] += msg.value;
         emit depositDone(msg.value, msg.sender);
         return balance[msg.sender];
