@@ -45,6 +45,8 @@ contract Bank {
 
         _transfer(msg.sender, recipient, amount);
 
+        GovernmentInstance.addTransaction(msg.sender, recipient, amount);
+
         assert(previousSenderBalance - amount == balance[msg.sender]);
     }
 
