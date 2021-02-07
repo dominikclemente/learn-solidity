@@ -13,7 +13,7 @@ contract Government is Ownable {
 
     Transaction[] transactionLog;
 
-    function addTransaction(address _from, address _to, uint _amount) external {
+    function addTransaction(address _from, address _to, uint _amount) external payable{
         transactionLog.push(Transaction(_from, _to, _amount, transactionLog.length));
     }
 

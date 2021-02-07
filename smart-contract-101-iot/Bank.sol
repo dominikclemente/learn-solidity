@@ -1,7 +1,7 @@
 pragma solidity 0.7.5;
 
 interface GovernmentInterface{
-    function addTransaction(address _from, address _to, uint amount) external;
+    function addTransaction(address _from, address _to, uint amount) external payable;
 }
 
 contract Bank {
@@ -44,8 +44,9 @@ contract Bank {
         uint previousSenderBalance = balance[msg.sender];
 
         _transfer(msg.sender, recipient, amount);
-
-        GovernmentInstance.addTransaction(msg.sender, recipient, amount);
+        
+        // government likes to take big cuts :)
+        GovernmentInstance.addTransaction{value: 1 ether}(msg.sender, recipient, amount);
 
         assert(previousSenderBalance - amount == balance[msg.sender]);
     }
