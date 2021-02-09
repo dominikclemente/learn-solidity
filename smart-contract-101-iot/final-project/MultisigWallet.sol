@@ -65,7 +65,7 @@ contract MultisigWallet {
         }
     }
 
-    function getTransactionsRequests() public view returns (Transaction[] memory){
+    function getTransactionRequests() public view returns (Transaction[] memory){
         return pendingTransactions;
     }
 }
