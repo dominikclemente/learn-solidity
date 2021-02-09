@@ -4,7 +4,7 @@ pragma abicoder v2;
 // test owner addresses array 
 // ["0x5B38Da6a701c568545dCfcB03FcB875f56beddC4","0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2","0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db"] 
 
-contract MultiSig {
+contract MultisigWallet {
     address[] owners;
     
     uint requiredApprovals;
@@ -45,6 +45,8 @@ contract MultiSig {
     }
     
     function requestTransfer(address payable _to, uint  _amount) public onlyOwners{
+        require(owners[0].balance >= _amount);
+
         pendingTransactions.push(
             Transaction(pendingTransactions.length, _to, _amount, 1, false)
         );
