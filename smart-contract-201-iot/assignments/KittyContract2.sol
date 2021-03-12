@@ -31,9 +31,6 @@ contract Kittycontract {
     
     mapping (address => uint256[]) ownerToCats;
 
-
-    
-
     function balanceOf(address owner) external view returns (uint256 balance){
         return ownershipTokenCount[owner];
     }

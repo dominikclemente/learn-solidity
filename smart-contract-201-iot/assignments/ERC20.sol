@@ -135,6 +135,7 @@ contract Token {
    */
   function transferFrom(address _from,address _to,uint256 _value) public returns (bool _success){
       require(allowed[_from][msg.sender] >= _value, "You don't have approval for this amount on this address");
+      require(balances[_from] >= _value, "There aren't enough funds in this address");
       balances[_from].sub(_value);
       allowed[_from][_to].sub(_value);
       balances[_to].add(_value);

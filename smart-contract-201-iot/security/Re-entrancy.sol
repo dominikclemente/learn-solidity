@@ -16,7 +16,7 @@ contract test {
         address payable owner = payable(msg.sender);
         balance[msg.sender] = 0; // EFFECT
 
-        bool success = owner.send(toTransfer);
+        bool success = owner.send(toTransfer); // INTERACTION
 
         if (!success) {
             balance[msg.sender] = toTransfer;

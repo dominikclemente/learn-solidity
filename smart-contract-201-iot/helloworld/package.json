@@ -1,0 +1,8 @@
+{
+  "name": "helloworld",
+  "version": "1.0.0",
+  "description": "Hello World smart contract setup",
+  "main": "index.js",
+  "author": "Dominik Clemente",
+  "license": "MIT"
+}
