@@ -1,0 +1,10 @@
+{
+  "name": "token",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Dominik Clemente",
+  "license": "MIT",
+  "dependencies": {
+    "@openzeppelin/contracts": "^3.4.1"
+  }
+}
