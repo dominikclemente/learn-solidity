@@ -23,7 +23,7 @@ import "./ERC20Pausable.sol";
  * roles, as well as the default admin role, which will let it grant both minter
  * and pauser roles to other accounts.
  */
-contract ERC20PresetMinterPauser is Context, AccessControl, ERC20Burnable, ERC20Pausable {
+contract ERC20MinterPauserCapped is Context, AccessControl, ERC20Burnable, ERC20Pausable {
     
     using SafeMath for uint256;
     uint256 private _cap;
@@ -101,7 +101,7 @@ contract ERC20PresetMinterPauser is Context, AccessControl, ERC20Burnable, ERC20
     function changeCap(uint256 newCap_) public virtual {
         require(hasRole(CAP_ROLE, _msgSender()), "ERC20MinterPauserCapped: must have cap role to modify maximum supply");
         // Make sure that the total supply will not exceed the new cap
-        require(totalSupply() >= newCap, "ERC20MinterPauserCapped: cap exceeded");
+        require(totalSupply() >= newCap_, "ERC20MinterPauserCapped: cap exceeded");
         _cap = newCap_;
     }
 
